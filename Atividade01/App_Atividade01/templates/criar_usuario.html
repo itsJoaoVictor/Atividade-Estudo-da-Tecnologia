@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Usuário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        small {
+            font-size: 80%;
+            color: #777;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Criar Usuário</h1>
+    </header>
+    <div class="container">
+        <form method="post" action="{% url 'criar_usuario' %}">
+            {% csrf_token %}
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" required><br><br>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            <label for="data_nascimento">Data de Nascimento (DD/MM/YYYY):</label>
+            <input type="text" id="data_nascimento" name="data_nascimento" pattern="\d{2}/\d{2}/\d{4}" required><br><br>
+            <small>Formato: DD/MM/YYYY</small><br><br>
+            <input type="submit" value="Criar Usuário">
+        </form>
+    </div>
+</body>
+</html>
